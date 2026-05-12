@@ -1,4 +1,4 @@
-from llm_client import gerar_resposta
+from src.llm_client import gerar_resposta
 
 
 def main():
