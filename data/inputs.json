@@ -9,10 +9,15 @@
   "extracao_dados_tecnicos": [
     "Carregador Wallbox de 22kW trifásico, conector Tipo 2, compatível com Volvo, BYD e Fiat 500e, instalado no Shopping Iguatemi SP",
     "Eletroposto de 50kW DC, padrão CHAdeMO, tensão 400V, localizado na Rodovia Anhanguera km 45",
-    "...mais 3 exemplos..."
+    "Carregador ABB Terra de 175kW, conector CCS2, instalado no Aeroporto de Guarulhos, terminal 2",
+    "WEG EVC300 de 300kW DC com conectores CCS2 e CHAdeMO, tensão 800V, localizado no posto Shell da Marginal Pinheiros",
+    "Carregador AC Schneider de 11kW, Tipo 2 monofásico, instalado no estacionamento do Hospital Albert Einstein"
   ],
   "resposta_suporte": [
     "Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",
-    "...mais 4 exemplos..."
+    "O carregador travou com meu cabo preso por 30 minutos, tive que ligar para o suporte de emergência",
+    "App cobrou sessão que nunca iniciou, já é a segunda vez esse mês",
+    "Fiquei esperando o carregador liberar por 1 hora e o status no app nunca atualizou",
+    "O carregador indicou 150kW mas meu carro carregou a no máximo 40kW durante toda a sessão"
   ]
 }

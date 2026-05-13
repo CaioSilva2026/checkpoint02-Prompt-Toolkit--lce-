@@ -1,7 +1,9 @@
 # 1. TOKENS — conta tokens usados na resposta
-def avaliar_tokens(resposta: str) -> int:
+import tiktoken
 
-    return len(resposta) // 4
+def avaliar_tokens(texto: str) -> int:
+    enc = tiktoken.get_encoding("cl100k_base")
+    return len(enc.encode(texto))
 
 # 2. ACURÁCIA — compara output com gabarito (para classificação)
 def avaliar_acuracia(output: str, gabarito: str) -> float:
@@ -17,9 +19,11 @@ def avaliar_consistencia(outputs: list[str]) -> float:
     return mais_comum / len(outputs)
 
 # 4. TEMPERATURA — registra a temperatura usada na chamada
-def avaliar_temperatura(temperatura: float) -> dict:
-    return {
-        "temperatura": temperatura,
-        "perfil": "determinístico" if temperatura == 0 else
-                  "balanceado" if temperatura <= 0.7 else "criativo"
-    }
+def testar_temperatura(prompt: str, gerar_resposta_fn, temps: list = [0.1, 0.5, 1.0]) -> list:
+
+    resultados = []
+    for temp in temps:
+        resultado = gerar_resposta_fn(prompt=prompt, temperatura=temp)
+        resultado["temperatura"] = temp
+        resultados.append(resultado)
+    return resultados

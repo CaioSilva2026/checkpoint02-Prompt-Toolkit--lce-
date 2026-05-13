@@ -7,6 +7,10 @@
     {
       "input": "Fui cobrado duas vezes na mesma sessão",
       "output": "FALHA_PAGAMENTO"
+    },
+    {
+      "input": "O app não reconhece o carregador mesmo com sinal forte",
+      "output": "FALHA_CONECTIVIDADE"
     }
   ],
   "extracao_dados_tecnicos": [
@@ -19,12 +23,26 @@
         "localizacao": "Parque Ibirapuera",
         "compatibilidade": null
       }
+    },
+    {
+      "input": "Eletroposto Volvo de 50kW DC com conector CCS2, tensão 400V, Shopping JK Iguatemi",
+      "output": {
+        "potencia_kw": 50,
+        "tipo_conector": "CCS2",
+        "tensao": "400V",
+        "localizacao": "Shopping JK Iguatemi",
+        "compatibilidade": "Volvo"
+      }
     }
   ],
   "resposta_suporte": [
     {
       "input": "Fui cobrado mas o carregador nem ligou",
-      "output": "Prezado cliente, lamentamos o ocorrido. Identificamos a falha na sessão de carregamento e iniciaremos o processo de reembolso em até 5 dias úteis. Por favor, informe o número do comprovante para agilizarmos."
+      "output": "Identificamos a falha na sua sessão de carregamento e já iniciamos o processo de reembolso de R$45 — o valor será estornado em até 3 dias úteis. Abrimos também uma ordem de serviço para inspeção do equipamento. Agradecemos por reportar."
+    },
+    {
+      "input": "Cabo preso no conector há 20 minutos, não consigo sair",
+      "output": "Entendemos a urgência — cabo preso é uma emergência real. Nossa equipe técnica foi acionada e chegará ao local em até 40 minutos. Enquanto isso, não force o cabo para evitar danos ao veículo. Ligue para 0800-XXX-XXXX se precisar de suporte imediato."
     }
   ]
 }
