@@ -1,0 +1,92 @@
+{
+  "_comentario": "Templates de prompt por tarefa. Domínio: Eletropostos / Carregadores de Carros Elétricos.",
+
+  "classificacao_sentimento": {
+    "instrucao": "Analise o texto de avaliação de usuário a seguir e classifique o sentimento expresso sobre a experiência de recarga no eletroposto.",
+    "contexto": "Você está processando avaliações de usuários de veículos elétricos sobre sessões de carregamento em eletropostos brasileiros. As avaliações podem misturar elogios e críticas sobre disponibilidade do carregador, velocidade de carga, aplicativo e infraestrutura do local.",
+    "formato_output": "Responda APENAS com uma das opções: POSITIVO | NEGATIVO | NEUTRO | MISTO\nNão adicione explicações ou pontuação extra.",
+    "passos_cot": [
+      "Leia o texto completo e identifique todas as expressões que indicam satisfação (ex.: rápido, funcionou, ótimo, chegou com carga).",
+      "Identifique todas as expressões que indicam insatisfação (ex.: carregador quebrado, demorou, não conectou, cobrou errado).",
+      "Avalie se há aspectos que não indicam nem satisfação nem insatisfação (neutros).",
+      "Compare o peso e a intensidade de cada categoria.",
+      "Se há apenas positivos → POSITIVO. Apenas negativos → NEGATIVO. Apenas neutros → NEUTRO. Mix → MISTO.",
+      "Forneça somente a classificação final."
+    ],
+    "exemplos_fewshot": [
+      {"input": "Carregador DC de 150kW funcionou perfeitamente, carregou meu EV de 20% a 80% em 25 minutos!", "output": "POSITIVO"},
+      {"input": "Os dois carregadores estavam fora de serviço, fiquei preso com 8% de bateria por 2 horas.", "output": "NEGATIVO"},
+      {"input": "Usei o eletroposto ontem. Funcionou.", "output": "NEUTRO"},
+      {"input": "A velocidade de carga foi excelente mas o app travou na hora de pagar e tive que ligar pro suporte.", "output": "MISTO"}
+    ]
+  },
+
+  "extracao_dados": {
+    "instrucao": "Extraia as informações estruturadas do relato de usuário sobre a sessão de carregamento a seguir.",
+    "contexto": "Você está processando ocorrências de suporte de uma rede de eletropostos. Extraia apenas dados explicitamente mencionados no texto. Se um dado não estiver presente, use null.",
+    "formato_output": "Retorne APENAS um JSON válido com as chaves: eletroposto, tipo_conector, potencia_kw, duracao_sessao, erro_reportado, numero_protocolo. Não inclua explicações fora do JSON.",
+    "passos_cot": [
+      "Identifique o nome ou localização do eletroposto mencionado.",
+      "Procure pelo tipo de conector utilizado (CCS2, CHAdeMO, Type 2, GB/T).",
+      "Identifique a potência do carregador em kW, se mencionada.",
+      "Procure por informações de duração da sessão ou tempo de espera.",
+      "Identifique erros, falhas ou problemas específicos relatados.",
+      "Procure por número de protocolo, ordem de serviço ou código de erro.",
+      "Monte o JSON apenas com os dados encontrados; use null para os ausentes."
+    ],
+    "exemplos_fewshot": [
+      {
+        "input": "No eletroposto do Shopping Morumbi, o carregador CCS2 de 100kW travou na sessão após 15 minutos com erro E-04.",
+        "output": "{\"eletroposto\": \"Shopping Morumbi\", \"tipo_conector\": \"CCS2\", \"potencia_kw\": \"100kW\", \"duracao_sessao\": \"15 minutos\", \"erro_reportado\": \"E-04\", \"numero_protocolo\": null}"
+      },
+      {
+        "input": "Protocolo #OS-9921: carregador Type 2 AC da unidade Paulista não comunicava com o app, sessão não iniciou.",
+        "output": "{\"eletroposto\": \"Paulista\", \"tipo_conector\": \"Type 2 AC\", \"potencia_kw\": null, \"duracao_sessao\": null, \"erro_reportado\": \"sem comunicação com o app, sessão não iniciou\", \"numero_protocolo\": \"#OS-9921\"}"
+      }
+    ]
+  },
+
+  "sumarizacao_ocorrencia": {
+    "instrucao": "Resuma o relato de ocorrência do usuário a seguir em um parágrafo executivo conciso para a equipe de operações.",
+    "contexto": "Você está gerando resumos para a equipe de NOC (Network Operations Center) de uma rede de eletropostos. O resumo deve capturar o eletroposto envolvido, o problema técnico principal, o impacto para o usuário e a ação necessária.",
+    "formato_output": "Escreva um parágrafo de 2 a 4 frases. Inclua: (1) o eletroposto e equipamento envolvido, (2) o problema técnico, (3) o impacto para o usuário, (4) ação ou prioridade sugerida. Linguagem direta, sem jargões desnecessários.",
+    "passos_cot": [
+      "Identifique o eletroposto e o equipamento (carregador/conector) envolvido.",
+      "Identifique o problema técnico ou operacional relatado.",
+      "Avalie o impacto para o usuário (ficou sem carga? perdeu tempo? foi cobrado indevidamente?).",
+      "Identifique se há urgência (usuário parado sem bateria é crítico).",
+      "Redija o resumo integrando todos esses elementos de forma coesa."
+    ],
+    "exemplos_fewshot": [
+      {
+        "input": "Estava no eletroposto da rodovia Anhanguera km 72 com meu BYD Seal com 6% de bateria. Tentei usar o carregador DC CCS2 de 150kW por 40 minutos e ele não iniciou a sessão nenhuma vez. O app mostrava o carregador como 'disponível' mas fisicamente a tela dele estava apagada. Tive que chamar guincho.",
+        "output": "Usuário relatou falha total no carregador DC CCS2 de 150kW no eletroposto Anhanguera km 72: o equipamento aparecia como disponível no app, mas a tela estava apagada e nenhuma sessão iniciou. O impacto foi crítico — o usuário chegou com apenas 6% de bateria e precisou acionar guincho. Recomenda-se envio imediato de técnico ao local e atualização do status do equipamento no sistema para 'indisponível'."
+      }
+    ]
+  },
+
+  "geracao_resposta": {
+    "instrucao": "Gere uma resposta profissional e empática para a avaliação ou reclamação do usuário sobre o eletroposto a seguir.",
+    "contexto": "Você representa o time de relacionamento de uma rede de eletropostos brasileira. A resposta será publicada publicamente na loja de aplicativos ou enviada por e-mail ao usuário.",
+    "formato_output": "Escreva entre 3 e 5 frases. Comece reconhecendo o relato específico do usuário. Apresente uma ação concreta ou próximo passo. Feche de forma positiva. Não use frases genéricas como 'lamentamos o ocorrido' ou 'estamos trabalhando para melhorar'.",
+    "passos_cot": [
+      "Identifique se o relato é positivo, negativo ou misto.",
+      "Para positivo: agradeça de forma personalizada citando o ponto elogiado (ex.: velocidade, praticidade do app).",
+      "Para negativo: reconheça o problema específico (ex.: carregador inoperante, cobrança errada) sem se esquivar, informe a ação tomada.",
+      "Para misto: reconheça o positivo e endereça o problema separadamente.",
+      "Se o problema foi crítico (usuário ficou sem bateria), demonstre urgência e compromisso real.",
+      "Feche com uma chamada para ação ou reforço do compromisso da rede.",
+      "Revise para garantir que não há frases genéricas ou vagas."
+    ],
+    "exemplos_fewshot": [
+      {
+        "input": "Carregador DC 150kW na Paulista funcionou perfeitamente! De 15% a 80% em menos de 30 minutos, melhor experiência de recarga que já tive no Brasil.",
+        "output": "Que experiência incrível — obrigado por compartilhar! Carregar de 15% a 80% em menos de 30 minutos é exatamente o desempenho que nosso carregador DC de 150kW foi projetado para entregar. Ficamos felizes que a sessão tenha sido tão fluida. Esperamos você na próxima recarga!"
+      },
+      {
+        "input": "Carregador quebrado pela terceira semana seguida no eletroposto do Ibirapuera. Já abri dois chamados e nada foi resolvido. Absurdo.",
+        "output": "Entendemos sua frustração — três semanas com o mesmo carregador fora de serviço e dois chamados sem resolução não é aceitável. Identificamos seu histórico de atendimento e escalamos a ocorrência do eletroposto Ibirapuera para a equipe técnica regional com prioridade máxima. Nossa equipe de operações entrará em contato em até 4 horas com uma previsão concreta de reparo. Pedimos desculpas pelo transtorno e agradecemos por não desistir de nos acionar."
+      }
+    ]
+  }
+}
