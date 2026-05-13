@@ -1,0 +1,30 @@
+{
+  "classificacao_ocorrencias": [
+    {
+      "input": "O conector travou e não saiu do carro",
+      "output": "FALHA_HARDWARE"
+    },
+    {
+      "input": "Fui cobrado duas vezes na mesma sessão",
+      "output": "FALHA_PAGAMENTO"
+    }
+  ],
+  "extracao_dados_tecnicos": [
+    {
+      "input": "Carregador de 7kW monofásico, Tipo 1, instalado no Parque Ibirapuera",
+      "output": {
+        "potencia_kw": 7,
+        "tipo_conector": "Tipo 1",
+        "tensao": null,
+        "localizacao": "Parque Ibirapuera",
+        "compatibilidade": null
+      }
+    }
+  ],
+  "resposta_suporte": [
+    {
+      "input": "Fui cobrado mas o carregador nem ligou",
+      "output": "Prezado cliente, lamentamos o ocorrido. Identificamos a falha na sessão de carregamento e iniciaremos o processo de reembolso em até 5 dias úteis. Por favor, informe o número do comprovante para agilizarmos."
+    }
+  ]
+}

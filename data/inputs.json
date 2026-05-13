@@ -1,0 +1,18 @@
+{
+  "classificacao_ocorrencias": [
+    "Tentei carregar meu carro mas o cabo não encaixou no meu conector",
+    "O app debitou R$30 mas a recarga não iniciou",
+    "O carregador fica offline toda vez que chove",
+    "Coloquei o plugue errado e faíscou",
+    "Carreguei normalmente, sem nenhum problema"
+  ],
+  "extracao_dados_tecnicos": [
+    "Carregador Wallbox de 22kW trifásico, conector Tipo 2, compatível com Volvo, BYD e Fiat 500e, instalado no Shopping Iguatemi SP",
+    "Eletroposto de 50kW DC, padrão CHAdeMO, tensão 400V, localizado na Rodovia Anhanguera km 45",
+    "...mais 3 exemplos..."
+  ],
+  "resposta_suporte": [
+    "Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",
+    "...mais 4 exemplos..."
+  ]
+}
