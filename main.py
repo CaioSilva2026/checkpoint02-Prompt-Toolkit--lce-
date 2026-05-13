@@ -3,7 +3,6 @@ from src.techniques import zero_shot, few_shot, chain_of_thought, role_prompting
 
 def main():
 
-    # Tarefa de exemplo
     tarefa = {
         "nome": "classificacao_ocorrencia",
         "instrucao": "Classifique o relato em: FALHA_HARDWARE, FALHA_PAGAMENTO, FALHA_CONECTIVIDADE, USO_INCORRETO ou SEM_DEFEITO.",
@@ -39,7 +38,7 @@ def main():
     print("CoT:", resultado_cot["resposta"])
 
     # 4. Role Prompting — única técnica que passa system separado
-    system, user = role_prompting(tarefa, input_dados, "tecnico_campo")
+    system, user = role_prompting(tarefa, input_dados, "analista_cx")
     resultado_role = gerar_resposta(prompt=user, system=system)
     print("Role:", resultado_role["resposta"])
 

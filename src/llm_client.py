@@ -8,7 +8,12 @@ load_dotenv()
 OLLAMA_URL = os.getenv("OLLAMA_URL")
 MODEL = os.getenv("MODEL")
 
-def gerar_resposta(prompt: str, system: str = "") -> dict:
+if not OLLAMA_URL:
+    raise EnvironmentError("OLLAMA_URL não encontrada. Crie um .env com OLLAMA_URL=http://localhost:11434")
+if not MODEL:
+    raise EnvironmentError("MODEL não encontrado. Crie um .env com MODEL=gpt-oss:120b")
+
+def gerar_resposta(prompt: str, system: str = "", temperatura: float = 0.7) -> dict:
 
     url = f"{OLLAMA_URL}/api/generate"
 
@@ -16,6 +21,7 @@ def gerar_resposta(prompt: str, system: str = "") -> dict:
         "model": MODEL,
         "prompt": prompt,
         "system": system,
+        "options": {"temperature": temperatura},
         "stream": False
     }
 

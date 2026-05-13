@@ -1,23 +1,8 @@
-"""
-prompt_builder.py
-Módulo responsável pela montagem e estruturação de prompts.
-Separa instrução de dados e oferece utilitários para few-shot e CoT.
-Referência: Aula 05 — Anatomia do Prompt
-"""
 
 from typing import Optional
 
-
-# ---------------------------------------------------------------------------
-# Constantes de formatação
-# ---------------------------------------------------------------------------
-
 SEPARADOR = "\n" + "-" * 60 + "\n"
 
-
-# ---------------------------------------------------------------------------
-# Funções principais
-# ---------------------------------------------------------------------------
 
 def montar_prompt(
     instrucao: str,
@@ -25,30 +10,7 @@ def montar_prompt(
     contexto: Optional[str] = None,
     formato_output: Optional[str] = None,
 ) -> str:
-    """
-    Monta um prompt estruturado separando instrução de dados (Aula 05).
 
-    Parâmetros
-    ----------
-    instrucao : str
-        O que o modelo deve fazer. Deve ser clara e imperativa.
-    input_dados : str
-        O texto/dado sobre o qual o modelo vai operar.
-    contexto : str, opcional
-        Informações de contexto ou restrições adicionais.
-    formato_output : str, opcional
-        Especificação de como o modelo deve formatar a resposta.
-
-    Retorna
-    -------
-    str
-        Prompt completo pronto para envio ao LLM.
-
-    Raises
-    ------
-    ValueError
-        Se instrucao ou input_dados estiverem vazios.
-    """
     _validar_nao_vazio(instrucao, "instrucao")
     _validar_nao_vazio(input_dados, "input_dados")
 
@@ -72,31 +34,7 @@ def montar_prompt(
 
 
 def adicionar_exemplos(prompt: str, exemplos: list[dict]) -> str:
-    """
-    Injeta exemplos de few-shot em um prompt já montado.
 
-    Os exemplos são inseridos logo antes da seção '### ENTRADA' para que
-    o modelo os veja antes de processar o input real.
-
-    Parâmetros
-    ----------
-    prompt : str
-        Prompt base gerado por montar_prompt().
-    exemplos : list[dict]
-        Lista de dicts com chaves 'input' e 'output'.
-        Exemplo: [{"input": "Adorei!", "output": "POSITIVO"}, ...]
-
-    Retorna
-    -------
-    str
-        Prompt com os exemplos inseridos.
-
-    Raises
-    ------
-    ValueError
-        Se o prompt não contiver a seção '### ENTRADA' ou se algum
-        exemplo estiver malformado.
-    """
     _validar_nao_vazio(prompt, "prompt")
 
     if not exemplos:
@@ -126,31 +64,7 @@ def adicionar_exemplos(prompt: str, exemplos: list[dict]) -> str:
 
 
 def adicionar_cot(prompt: str, passos: list[str]) -> str:
-    """
-    Adiciona instrução de Chain-of-Thought (raciocínio explícito) ao prompt.
 
-    Os passos de raciocínio são anexados após a seção '### INSTRUÇÃO',
-    orientando o modelo a pensar passo a passo antes de responder.
-
-    Parâmetros
-    ----------
-    prompt : str
-        Prompt base gerado por montar_prompt().
-    passos : list[str]
-        Lista de passos de raciocínio que o modelo deve seguir.
-        Exemplo: ["Identifique aspectos positivos", "Compare e classifique"]
-
-    Retorna
-    -------
-    str
-        Prompt com as instruções de CoT inseridas.
-
-    Raises
-    ------
-    ValueError
-        Se o prompt não contiver '### INSTRUÇÃO' ou a lista de passos
-        estiver vazia.
-    """
     _validar_nao_vazio(prompt, "prompt")
 
     if not passos:
@@ -186,11 +100,6 @@ def adicionar_cot(prompt: str, passos: list[str]) -> str:
         insercao = proximo_sep  # insere antes do próximo separador
         return prompt[:insercao] + f"\n\n{bloco_cot}" + prompt[insercao:]
 
-
-# ---------------------------------------------------------------------------
-# Helpers internos
-# ---------------------------------------------------------------------------
-
 def _validar_nao_vazio(valor: str, nome: str) -> None:
     """Garante que uma string não seja None nem vazia após strip()."""
     if not valor or not str(valor).strip():
@@ -218,11 +127,6 @@ def _validar_exemplos(exemplos: list[dict]) -> None:
                 f"Exemplo {i} tem 'input' ou 'output' vazio. "
                 "Todos os exemplos devem ter valores preenchidos."
             )
-
-
-# ---------------------------------------------------------------------------
-# Demonstração (execução direta do módulo)
-# ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
     print("=== Teste: montar_prompt básico ===")

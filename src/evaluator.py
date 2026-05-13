@@ -1,6 +1,6 @@
 # 1. TOKENS — conta tokens usados na resposta
 def avaliar_tokens(resposta: str) -> int:
-    # Aproximação simples: 1 token ≈ 4 caracteres
+
     return len(resposta) // 4
 
 # 2. ACURÁCIA — compara output com gabarito (para classificação)
