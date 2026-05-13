@@ -8,7 +8,6 @@ load_dotenv()
 OLLAMA_URL = os.getenv("OLLAMA_URL")
 MODEL = os.getenv("MODEL")
 
-
 def gerar_resposta(prompt: str, system: str = "") -> dict:
 
     url = f"{OLLAMA_URL}/api/generate"

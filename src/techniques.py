@@ -1,37 +1,7 @@
 import json
 import os
 
-# from src.prompt_builder import montar_prompt, adicionar_exemplos, adicionar_cot
-
-def montar_prompt(instrucao, contexto, input_dados, formato_output):
-    """
-    PLACEHOLDER — substitua por: from src.prompt_builder import montar_prompt
-    """
-    return (
-        f"Instrução: {instrucao}\n"
-        f"Contexto: {contexto}\n"
-        f"Input: {input_dados}\n"
-        f"Formato esperado: {formato_output}"
-    )
-
-def adicionar_exemplos(prompt: str, exemplos: list) -> str:
-    """
-    PLACEHOLDER — substitua por: from src.prompt_builder import adicionar_exemplos
-    """
-    bloco = "\n\nExemplos:\n"
-    for ex in exemplos:
-        bloco += f'Input: "{ex["input"]}" → Output: "{ex["output"]}"\n'
-    return bloco + "\n" + prompt
-
-def adicionar_cot(prompt: str, passos: list) -> str:
-    """
-    PLACEHOLDER — substitua por: from src.prompt_builder import adicionar_cot
-    """
-    bloco = "Analise passo a passo:\n"
-    for i, passo in enumerate(passos, start=1):
-        bloco += f"  Passo {i}: {passo}\n"
-    bloco += "\nApenas após seguir todos os passos, forneça a resposta final.\n\n"
-    return bloco + prompt
+from src.prompt_builder import montar_prompt, adicionar_exemplos, adicionar_cot
 
 def carregar_personas(caminho: str = "prompts/system_prompts.json") -> dict:
     if not os.path.exists(caminho):
