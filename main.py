@@ -2,7 +2,9 @@ import json
 from src.llm_client import gerar_resposta
 from src.techniques import zero_shot, few_shot, chain_of_thought, role_prompting
 from src.tasks import TASKS
-from src.evaluator import avaliar_tokens, avaliar_acuracia, avaliar_consistencia, testar_temperatura
+from src.evaluator import avaliar_tokens, avaliar_consistencia, testar_temperatura
+
+from src.report import gerar_relatorio
 
 def carregar_inputs(caminho: str = "data/inputs.json") -> dict:
     with open(caminho, "r", encoding="utf-8") as f:
@@ -31,6 +33,49 @@ def executar_tecnicas(tarefa: dict, input_dados: str) -> dict:
     return resultados
 
 
+def medir_consistencia_real(tarefa: dict, input_dados: str, n: int = 3) -> dict:
+
+    print(f"\n  [CONSISTÊNCIA] Rodando input representativo {n}x por técnica...")
+    consistencias = {}
+
+    # Zero-Shot
+    respostas = []
+    prompt_zs = zero_shot(tarefa, input_dados)
+    for i in range(n):
+        r = gerar_resposta(prompt=prompt_zs)
+        respostas.append(r["resposta"])
+        print(f"    Zero-Shot  [{i + 1}/{n}]: {r['resposta']}")
+    consistencias["zero_shot"] = avaliar_consistencia(respostas)
+
+    # Few-Shot
+    respostas = []
+    prompt_fs = few_shot(tarefa, input_dados, tarefa["exemplos_fewshot"])
+    for i in range(n):
+        r = gerar_resposta(prompt=prompt_fs)
+        respostas.append(r["resposta"])
+        print(f"    Few-Shot   [{i + 1}/{n}]: {r['resposta']}")
+    consistencias["few_shot"] = avaliar_consistencia(respostas)
+
+    # Chain-of-Thought
+    respostas = []
+    prompt_cot = chain_of_thought(tarefa, input_dados, tarefa["passos_cot"])
+    for i in range(n):
+        r = gerar_resposta(prompt=prompt_cot)
+        respostas.append(r["resposta"])
+        print(f"    CoT        [{i + 1}/{n}]: {r['resposta']}")
+    consistencias["chain_of_thought"] = avaliar_consistencia(respostas)
+
+    # Role Prompting
+    respostas = []
+    system, user = role_prompting(tarefa, input_dados, tarefa["persona"])
+    for i in range(n):
+        r = gerar_resposta(prompt=user, system=system)
+        respostas.append(r["resposta"])
+        print(f"    Role       [{i + 1}/{n}]: {r['resposta']}")
+    consistencias["role_prompting"] = avaliar_consistencia(respostas)
+
+    return consistencias
+
 def imprimir_resultado(tarefa_nome: str, input_dados: str, resultados: dict) -> None:
 
     separador = "-" * 60
@@ -56,6 +101,8 @@ def main():
 
     # Acumula todos os resultados para o relatório
     todos_resultados = []
+
+    consistencias_por_tarefas = {}
 
     # Itera sobre cada tarefa definida em tasks.py
     for tarefa in TASKS:
@@ -88,14 +135,16 @@ def main():
             })
 
         # Mede consistência por técnica (mesma tarefa, todos os inputs)
-        for tecnica in ["zero_shot", "few_shot", "chain_of_thought", "role_prompting"]:
-            respostas = [r["resultados"][tecnica]["resposta"] for r in respostas_por_input]
-            consistencia = avaliar_consistencia(respostas)
-            print(f"  Consistência [{tecnica}]: {consistencia * 100:.0f}%")
+        input_representativo = inputs_da_tarefa[0]
+        consistencias = medir_consistencia_real(tarefa=tarefa,input_dados=input_representativo,n=3)
+        consistencias_por_tarefas[nome_tarefa] = consistencias
 
+        print(f"\n  Consistência real (input representativo — 3 repetições):")
+        for tecnica, valor in consistencias.items():
+            print(f"    {tecnica:<25}: {valor * 100:.0f}%")
         todos_resultados.append({
-            "tarefa": nome_tarefa,
-            "inputs": respostas_por_input
+        "tarefa": nome_tarefa,
+        "inputs": respostas_por_input
         })
 
     print(f"\n{'=' * 60}")
@@ -115,10 +164,24 @@ def main():
     for r in resultados_temp:
         print(f"  Temperatura {r['temperatura']} → {r['resposta']}")
 
+    consistencias_globais = {}
+    for tecnica in ["zero_shot", "few_shot", "chain_of_thought", "role_prompting"]:
+        valores = [
+            consistencias_por_tarefas[t][tecnica]
+            for t in consistencias_por_tarefas
+            if tecnica in consistencias_por_tarefas[t]
+        ]
+        consistencias_globais[tecnica] = sum(valores) / len(valores) if valores else 0.0
+
     print(f"\n{'=' * 60}")
-    print("Execução concluída.")
-    print("Aguardando report.py para geração de tabelas e gráficos.")
-    print(f"{'=' * 60}")
+    print("CONSISTÊNCIA GLOBAL (média entre tarefas):")
+    for tecnica, valor in consistencias_globais.items():
+        print(f"  {tecnica:<25}: {valor * 100:.0f}%")
+
+    gerar_relatorio(
+        todos_resultados=todos_resultados,
+        consistencias=consistencias_globais
+    )
 
 if __name__ == "__main__":
     main()

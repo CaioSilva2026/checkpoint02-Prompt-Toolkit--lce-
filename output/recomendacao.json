@@ -1,0 +1,11 @@
+{
+  "melhor_tecnica": "chain_of_thought",
+  "label": "Chain-of-Thought",
+  "scores": {
+    "zero_shot": 0.03541969917515772,
+    "few_shot": 0.1476694311703255,
+    "chain_of_thought": 0.5055084538639276,
+    "role_prompting": 0.0222222222222222
+  },
+  "justificativa": "A técnica 'Chain-of-Thought' obteve o maior score ponderado (0.506). Média: 290 tokens de prompt, 164 tokens de resposta, 11970 ms de latência. Consistência: 56%."
+}
