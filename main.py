@@ -4,6 +4,8 @@ from src.techniques import zero_shot, few_shot, chain_of_thought, role_prompting
 from src.tasks import TASKS
 from src.evaluator import avaliar_tokens, avaliar_acuracia, avaliar_consistencia, testar_temperatura
 
+from src.report import gerar_relatorio
+
 def carregar_inputs(caminho: str = "data/inputs.json") -> dict:
     with open(caminho, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -59,6 +61,8 @@ def main():
     # Acumula todos os resultados para o relatório
     todos_resultados = []
 
+    consistencias_gerais = {}
+
     # Itera sobre cada tarefa definida em tasks.py
     for tarefa in TASKS:
         nome_tarefa = tarefa["nome"]
@@ -93,7 +97,11 @@ def main():
         for tecnica in ["zero_shot", "few_shot", "chain_of_thought", "role_prompting"]:
             respostas = [r["resultados"][tecnica]["resposta"] for r in respostas_por_input]
             consistencia = avaliar_consistencia(respostas)
-            print(f"  Consistência [{tecnica}]: {consistencia * 100:.0f}%")
+            for tecnica in ["zero_shot", "few_shot", "chain_of_thought", "role_prompting"]:
+                respostas = [r["resultados"][tecnica]["resposta"] for r in respostas_por_input]
+                consistencia = avaliar_consistencia(respostas)
+                consistencias_gerais[tecnica] = consistencia
+                print(f"  Consistência [{tecnica}]: {consistencia * 100:.0f}%")
 
         todos_resultados.append({
             "tarefa": nome_tarefa,
@@ -121,6 +129,11 @@ def main():
     print("Execução concluída.")
     print("Aguardando report.py para geração de tabelas e gráficos.")
     print(f"{'=' * 60}")
+
+    gerar_relatorio(
+        todos_resultados=todos_resultados,
+        consistencias=consistencias_gerais
+    )
 
 
 if __name__ == "__main__":

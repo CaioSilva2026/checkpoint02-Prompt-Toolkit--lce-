@@ -10,11 +10,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-# ──────────────────────────────────────────────────────────────
-# CONFIGURAÇÕES
-# ──────────────────────────────────────────────────────────────
-OUTPUT_DIR = "output"
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+OUTPUT_DIR    = "output"
+GRAFICOS_DIR  = os.path.join(OUTPUT_DIR, "graficos")
+os.makedirs(GRAFICOS_DIR, exist_ok=True)
 
 TECNICAS = ["zero_shot", "few_shot", "chain_of_thought", "role_prompting"]
 TECNICAS_LABELS = {
@@ -24,7 +22,6 @@ TECNICAS_LABELS = {
     "role_prompting": "Role Prompting",
 }
 
-# Cores consistentes para cada técnica nos gráficos
 COR_TECNICA = {
     "zero_shot": "#4C72B0",
     "few_shot": "#DD8452",
@@ -32,19 +29,8 @@ COR_TECNICA = {
     "role_prompting": "#C44E52",
 }
 
-
-# ──────────────────────────────────────────────────────────────
 # 1. GERAÇÃO DA TABELA CSV
-# ──────────────────────────────────────────────────────────────
-
 def gerar_csv(todos_resultados: list, caminho: str = None) -> pd.DataFrame:
-    """
-    Recebe a lista de resultados gerada pelo main.py e salva um CSV
-    com uma linha por (tarefa, input, técnica).
-
-    Colunas: tarefa, input, tecnica, resposta, tokens_prompt,
-             tokens_resposta, tempo_ms, tokens_contados, consistencia
-    """
     if caminho is None:
         caminho = os.path.join(OUTPUT_DIR, "resultados.csv")
 
@@ -69,9 +55,6 @@ def gerar_csv(todos_resultados: list, caminho: str = None) -> pd.DataFrame:
     df.to_csv(caminho, index=False, encoding="utf-8")
     print(f"[CSV] Salvo em: {caminho}  ({len(df)} linhas)")
     return df
-
-
-def _carregar_ou_simular(caminho_csv: str = None) -> pd.DataFrame:
     """Carrega CSV existente ou cria dados simulados para demonstração."""
     if caminho_csv and os.path.exists(caminho_csv):
         return pd.read_csv(caminho_csv)
@@ -126,13 +109,8 @@ def _carregar_ou_simular(caminho_csv: str = None) -> pd.DataFrame:
 
     return pd.DataFrame(linhas)
 
-
-# ──────────────────────────────────────────────────────────────
 # 2. GRÁFICOS
-# ──────────────────────────────────────────────────────────────
-
 def grafico_tokens_por_tecnica(df: pd.DataFrame, caminho: str = None) -> str:
-    """Barras agrupadas: tokens_prompt e tokens_resposta por técnica."""
     if caminho is None:
         caminho = os.path.join(OUTPUT_DIR, "grafico_tokens.png")
 
@@ -221,10 +199,6 @@ def grafico_comparativo_tarefas(df: pd.DataFrame, caminho: str = None) -> str:
 
 
 def grafico_consistencia(consistencias: dict, caminho: str = None) -> str:
-    """
-    Gráfico de barras horizontais com a consistência (%) por técnica.
-    consistencias: {"zero_shot": 0.87, "few_shot": 0.92, ...}
-    """
     if caminho is None:
         caminho = os.path.join(OUTPUT_DIR, "grafico_consistencia.png")
 
@@ -252,11 +226,7 @@ def grafico_consistencia(consistencias: dict, caminho: str = None) -> str:
     print(f"[GRÁFICO] Consistência → {caminho}")
     return caminho
 
-
-# ──────────────────────────────────────────────────────────────
 # 3. RECOMENDAÇÃO AUTOMÁTICA
-# ──────────────────────────────────────────────────────────────
-
 PESOS = {
     "tokens_prompt": -0.2,      # menos tokens = melhor
     "tokens_resposta": 0.3,     # mais tokens na resposta = mais detalhado
@@ -272,19 +242,6 @@ def recomendar_tecnica(
     consistencias: dict = None,
     tarefa: str = None,
 ) -> dict:
-    """
-    Calcula um score ponderado para cada técnica e retorna a recomendação.
-
-    Parâmetros
-    ----------
-    df : DataFrame com colunas tokens_prompt, tokens_resposta, tempo_ms, tokens_contados
-    consistencias : dict opcional {"tecnica": float 0-1}
-    tarefa : filtra por tarefa específica (None = todas)
-
-    Retorna
-    -------
-    dict com keys: melhor_tecnica, scores, justificativa
-    """
     subset = df[df["tarefa"] == tarefa] if tarefa else df
 
     # Agrega métricas por técnica
@@ -341,24 +298,12 @@ def recomendar_tecnica(
     print(f"  {justificativa}")
     return resultado
 
-
-# ──────────────────────────────────────────────────────────────
 # 4. RELATÓRIO COMPLETO (entry point)
-# ──────────────────────────────────────────────────────────────
-
 def gerar_relatorio(
     todos_resultados: list = None,
     consistencias: dict = None,
     caminho_csv: str = None,
 ):
-    """
-    Ponto de entrada principal. Pode ser chamado pelo main.py passando
-    todos_resultados, ou executado standalone (usa dados simulados).
-
-    Exemplo de chamada a partir do main.py:
-        from report import gerar_relatorio
-        gerar_relatorio(todos_resultados=todos_resultados, consistencias={...})
-    """
     print("\n" + "=" * 60)
     print("RELATÓRIO — Prompt Toolkit CP02")
     print("=" * 60)
@@ -367,8 +312,10 @@ def gerar_relatorio(
     if todos_resultados:
         df = gerar_csv(todos_resultados)
     else:
-        df = _carregar_ou_simular(caminho_csv)
-        print("[INFO] Usando dados simulados (main.py não forneceu resultados).")
+        raise ValueError(
+            "[report] todos_resultados não pode ser vazio. "
+            "Certifique-se de chamar gerar_relatorio() a partir do main.py."
+        )
 
     # 2. Gráficos
     grafico_tokens_por_tecnica(df)
@@ -399,9 +346,6 @@ def gerar_relatorio(
 
     return df, rec
 
-
-# ──────────────────────────────────────────────────────────────
 # Execução direta
-# ──────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     gerar_relatorio()
