@@ -19,8 +19,15 @@ checkpoint02-Prompt-Toolkit--lce-/
 ├── data/
 │   └── inputs.json          # Inputs de teste por tarefa
 ├── docs/
-│   └── CP02_NomeDoGrupo.pdf # Documentação técnica (4–6 páginas)
+│   └── CP02_NomeDoGrupo.pdf # Documentação técnica
 ├── output/                  # Gerado automaticamente pelo report.py
+    ├── resultados.csv
+    ├── recomendacao.json
+    └── graficos/
+        ├── grafico_tokens.png
+        ├── grafico_tempo.png
+        ├── grafico_heatmap.png
+        └── grafico_consistencia.png
 │   ├── resultados.csv
 │   ├── grafico_tokens.png
 │   ├── grafico_tempo.png
@@ -31,11 +38,11 @@ checkpoint02-Prompt-Toolkit--lce-/
 ├── src/
 │   ├── evaluator.py         # Avaliação de tokens, acurácia, consistência
 │   ├── llm_client.py        # Cliente da API (requests + dotenv)
+|   ├── report.py            # Gera CSV, gráficos e recomendação automática
 │   ├── tasks.py             # Definição das tarefas do domínio
 │   └── techniques.py        # zero_shot, few_shot, cot, role_prompting
 ├── .gitignore
 ├── main.py                  # Executa todas as técnicas e coleta resultados
-├── report.py                # Gera CSV, gráficos e recomendação automática
 └── requirements.txt
 ```
 
@@ -49,6 +56,16 @@ checkpoint02-Prompt-Toolkit--lce-/
 ---
 
 ## Instalação
+
+### 0. Instale e inicie o Ollama
+Baixe o Ollama em https://ollama.com e instale.
+
+Após instalar, baixe o modelo:
+```bash    
+ollama pull gpt-oss:120b
+```
+    
+Mantenha o Ollama rodando em segundo plano antes de executar o projeto.
 
 ### 1. Clone o repositório
 
@@ -82,7 +99,8 @@ pip install -r requirements.txt
 Crie um arquivo `.env` na raiz do projeto:
 
 ```
-OPENAI_API_KEY=sua_chave_aqui
+OLLAMA_URL=http://localhost:11434
+MODEL=gpt-oss:120b
 ```
 
 > O arquivo `.env` já está no `.gitignore` — nunca suba sua chave para o repositório.
@@ -101,18 +119,7 @@ Isso itera sobre todas as tarefas e inputs definidos em `data/inputs.json`, apli
 
 ### Gerar relatório, gráficos e recomendação
 
-```bash
-python report.py
-```
-
-Pode ser executado de forma independente (usa dados simulados) ou após o `main.py`. Os arquivos gerados são salvos na pasta `output/`.
-
-Para integrar com o `main.py`, adicione ao final de `main.py`:
-
-```python
-from report import gerar_relatorio
-gerar_relatorio(todos_resultados=todos_resultados, consistencias={...})
-```
+O relatório é gerado automaticamente ao final do main.py.
 
 ---
 
@@ -145,8 +152,8 @@ gerar_relatorio(todos_resultados=todos_resultados, consistencias={...})
 | Pessoa | Responsabilidade |
 |---|---|
 | Pessoa 1 | `src/llm_client.py` — integração com a API |
-| Pessoa 2 | `src/techniques.py` — implementação das 4 técnicas |
-| Pessoa 3 | `src/tasks.py` + `data/inputs.json` — domínio e inputs |
+| Pessoa 2 | `src/tasks.py` + `data/inputs.json` — domínio e inputs |
+| Pessoa 3 | `src/techniques.py` — implementação das 4 técnicas |
 | Pessoa 4 | `src/evaluator.py` — métricas de avaliação |
 | Pessoa 5 | `report.py` + `output/` + `README.md` + `docs/CP02_NomeDoGrupo.pdf` |
 
@@ -159,4 +166,5 @@ requests
 python-dotenv
 pandas
 matplotlib
+tiktoken
 ```
