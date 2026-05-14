@@ -32,9 +32,7 @@ def executar_tecnicas(tarefa: dict, input_dados: str) -> dict:
 
 
 def imprimir_resultado(tarefa_nome: str, input_dados: str, resultados: dict) -> None:
-    """
-    Imprime no terminal os resultados das 4 técnicas para um input.
-    """
+
     separador = "-" * 60
     print(f"\n{separador}")
     print(f"TAREFA : {tarefa_nome}")
@@ -121,7 +119,6 @@ def main():
     print("Execução concluída.")
     print("Aguardando report.py para geração de tabelas e gráficos.")
     print(f"{'=' * 60}")
-
 
 if __name__ == "__main__":
     main()
