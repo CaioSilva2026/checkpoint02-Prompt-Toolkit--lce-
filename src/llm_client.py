@@ -1,46 +1,58 @@
-import requests
+from ollama import Client
 import os
 import time
 from dotenv import load_dotenv
 
 load_dotenv()
 
-OLLAMA_URL = os.getenv("OLLAMA_URL")
-MODEL = os.getenv("MODEL")
+OLLAMA_API_KEY = os.getenv("OLLAMA_API_KEY")
 
-if not OLLAMA_URL:
-    raise EnvironmentError("OLLAMA_URL não encontrada. Crie um .env com OLLAMA_URL=http://localhost:11434")
-if not MODEL:
-    raise EnvironmentError("MODEL não encontrado. Crie um .env com MODEL=gpt-oss:120b")
+if not OLLAMA_API_KEY:
+    raise EnvironmentError(
+        "OLLAMA_API_KEY não encontrada. "
+        "Crie um .env com OLLAMA_API_KEY=sua_chave_aqui"
+    )
+
+client = Client(
+    host="https://ollama.com",
+    headers={"Authorization": "Bearer " + OLLAMA_API_KEY}
+)
 
 def gerar_resposta(prompt: str, system: str = "", temperatura: float = 0.7) -> dict:
 
-    url = f"{OLLAMA_URL}/api/generate"
+    mensagens = []
 
-    payload = {
-        "model": MODEL,
-        "prompt": prompt,
-        "system": system,
-        "options": {"temperature": temperatura},
-        "stream": False
-    }
+    if system and system.strip():
+        mensagens.append({"role": "system", "content": system})
+
+    mensagens.append({"role": "user", "content": prompt})
 
     inicio = time.time()
-    response = requests.post(url, json=payload)
-    tempo_ms = int((time.time() - inicio) * 1000)
 
-    if response.status_code == 200:
-        data = response.json()
+    try:
+        resposta = client.chat(
+            model="gpt-oss:120b",
+            messages=mensagens,
+            options={"num_predict": 300, "temperature": temperatura},
+            stream=False
+        )
+        tempo_ms = int((time.time() - inicio) * 1000)
+
+        conteudo = resposta["message"]["content"].strip()
+
         return {
-            "resposta":        data.get("response", ""),
-            "tokens_prompt":   data.get("prompt_eval_count", 0),
-            "tokens_resposta": data.get("eval_count", 0),
+            "resposta":        conteudo,
+            "tokens_prompt":   resposta.get("prompt_eval_count", 0),
+            "tokens_resposta": resposta.get("eval_count", 0),
             "tempo_ms":        tempo_ms
         }
 
-    return {
-        "resposta":        f"Erro: {response.status_code}",
-        "tokens_prompt":   0,
-        "tokens_resposta": 0,
-        "tempo_ms":        tempo_ms
-    }
+    except Exception as e:
+        tempo_ms = int((time.time() - inicio) * 1000)
+        return {
+            "resposta":        f"Erro: {e}",
+            "tokens_prompt":   0,
+            "tokens_resposta": 0,
+            "tempo_ms":        tempo_ms
+        }
+}
