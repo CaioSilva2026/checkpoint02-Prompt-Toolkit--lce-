@@ -57,16 +57,6 @@ checkpoint02-Prompt-Toolkit--lce-/
 
 ## Instalação
 
-### 0. Instale e inicie o Ollama
-Baixe o Ollama em https://ollama.com e instale.
-
-Após instalar, baixe o modelo:
-```bash    
-ollama pull gpt-oss:120b
-```
-    
-Mantenha o Ollama rodando em segundo plano antes de executar o projeto.
-
 ### 1. Clone o repositório
 
 ```bash
@@ -99,8 +89,7 @@ pip install -r requirements.txt
 Crie um arquivo `.env` na raiz do projeto:
 
 ```
-OLLAMA_URL=http://localhost:11434
-MODEL=gpt-oss:120b
+OLLAMA_API_KEY=sua_chave_aqui
 ```
 
 > O arquivo `.env` já está no `.gitignore` — nunca suba sua chave para o repositório.
@@ -167,4 +156,5 @@ python-dotenv
 pandas
 matplotlib
 tiktoken
+ollama
 ```
