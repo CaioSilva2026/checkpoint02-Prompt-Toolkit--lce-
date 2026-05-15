@@ -55,4 +55,4 @@ def gerar_resposta(prompt: str, system: str = "", temperatura: float = 0.7) -> d
             "tokens_resposta": 0,
             "tempo_ms":        tempo_ms
         }
-}
+
