@@ -1,11 +1,11 @@
 {
-  "melhor_tecnica": "chain_of_thought",
-  "label": "Chain-of-Thought",
+  "melhor_tecnica": "zero_shot",
+  "label": "Zero-Shot",
   "scores": {
-    "zero_shot": 0.03541969917515772,
-    "few_shot": 0.1476694311703255,
-    "chain_of_thought": 0.5055084538639276,
-    "role_prompting": 0.0222222222222222
+    "zero_shot": 0.69908018354168,
+    "few_shot": 0.24504384799362194,
+    "chain_of_thought": 0.17044025157232698,
+    "role_prompting": 0.14177931751866718
   },
-  "justificativa": "A técnica 'Chain-of-Thought' obteve o maior score ponderado (0.506). Média: 290 tokens de prompt, 164 tokens de resposta, 11970 ms de latência. Consistência: 56%."
+  "justificativa": "A técnica 'Zero-Shot' obteve o maior score ponderado (0.699). Média: 191 tokens de prompt, 191 tokens de resposta, 2448 ms de latência. Consistência: 67%."
 }

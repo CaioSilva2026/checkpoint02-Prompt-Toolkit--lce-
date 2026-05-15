@@ -54,7 +54,7 @@ def gerar_csv(todos_resultados: list, caminho: str = None) -> pd.DataFrame:
 # 2. GRÁFICOS
 def grafico_tokens_por_tecnica(df: pd.DataFrame, caminho: str = None) -> str:
     if caminho is None:
-        caminho = os.path.join(GRAFICOS_DIR, "../output/graficos/grafico_tokens.png")
+        caminho = os.path.join(GRAFICOS_DIR, "grafico_tokens.png")
 
     agg = df.groupby("tecnica")[["tokens_prompt", "tokens_resposta"]].mean().reindex(TECNICAS)
 
@@ -85,7 +85,7 @@ def grafico_tokens_por_tecnica(df: pd.DataFrame, caminho: str = None) -> str:
 def grafico_tempo_por_tecnica(df: pd.DataFrame, caminho: str = None) -> str:
 
     if caminho is None:
-        caminho = os.path.join(GRAFICOS_DIR, "../output/graficos/grafico_tempo.png")
+        caminho = os.path.join(GRAFICOS_DIR, "grafico_tempo.png")
 
     dados = [df[df["tecnica"] == t]["tempo_ms"].dropna().values for t in TECNICAS]
     labels = [TECNICAS_LABELS[t] for t in TECNICAS]
@@ -111,7 +111,7 @@ def grafico_tempo_por_tecnica(df: pd.DataFrame, caminho: str = None) -> str:
 def grafico_comparativo_tarefas(df: pd.DataFrame, caminho: str = None) -> str:
 
     if caminho is None:
-        caminho = os.path.join(GRAFICOS_DIR, "../output/graficos/grafico_heatmap.png")
+        caminho = os.path.join(GRAFICOS_DIR, "grafico_heatmap.png")
 
     pivot = df.pivot_table(
         values="tokens_resposta", index="tarefa", columns="tecnica", aggfunc="mean"
@@ -141,7 +141,7 @@ def grafico_comparativo_tarefas(df: pd.DataFrame, caminho: str = None) -> str:
 
 def grafico_consistencia(consistencias: dict, caminho: str = None) -> str:
     if caminho is None:
-        caminho = os.path.join(GRAFICOS_DIR, "../output/graficos/grafico_consistencia.png")
+        caminho = os.path.join(GRAFICOS_DIR, "grafico_consistencia.png")
 
     tecnicas = [t for t in TECNICAS if t in consistencias]
     valores = [consistencias[t] * 100 for t in tecnicas]

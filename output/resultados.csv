@@ -1,327 +1,169 @@
 tarefa,input,tecnica,resposta,tokens_prompt,tokens_resposta,tempo_ms,tokens_contados
-classificacao_ocorrencias,Tentei carregar meu carro mas o cabo não encaixou no meu conector,zero_shot,USO_INCORRETO,135,7,106589,6
-classificacao_ocorrencias,Tentei carregar meu carro mas o cabo não encaixou no meu conector,few_shot,FALHA_HARDWARE,242,6,3258,5
-classificacao_ocorrencias,Tentei carregar meu carro mas o cabo não encaixou no meu conector,chain_of_thought,FALHA_HARDWARE,251,6,2786,5
-classificacao_ocorrencias,Tentei carregar meu carro mas o cabo não encaixou no meu conector,role_prompting,FALHA_CONECTIVIDADE,322,8,2945,7
-classificacao_ocorrencias,O app debitou R$30 mas a recarga não iniciou,zero_shot,FALHA_PAGAMENTO,130,8,2814,7
-classificacao_ocorrencias,O app debitou R$30 mas a recarga não iniciou,few_shot,FALHA_PAGAMENTO,237,8,2839,7
-classificacao_ocorrencias,O app debitou R$30 mas a recarga não iniciou,chain_of_thought,USO_INCORRETO,246,7,2871,6
-classificacao_ocorrencias,O app debitou R$30 mas a recarga não iniciou,role_prompting,FALHA_PAGAMENTO,317,8,3076,7
-classificacao_ocorrencias,O carregador fica offline toda vez que chove,zero_shot,FALHA_CONECTIVIDADE,127,8,2875,7
-classificacao_ocorrencias,O carregador fica offline toda vez que chove,few_shot,FALHA_CONECTIVIDADE,234,8,2908,7
-classificacao_ocorrencias,O carregador fica offline toda vez que chove,chain_of_thought,FALHA_CONECTIVIDADE,243,8,2886,7
-classificacao_ocorrencias,O carregador fica offline toda vez que chove,role_prompting,FALHA_CONECTIVIDADE,314,8,2936,7
-classificacao_ocorrencias,Coloquei o plugue errado e faíscou,zero_shot,USO_INCORRETO,129,7,2756,6
-classificacao_ocorrencias,Coloquei o plugue errado e faíscou,few_shot,USO_INCORRETO,236,7,2813,6
-classificacao_ocorrencias,Coloquei o plugue errado e faíscou,chain_of_thought,USO_INCORRETO,245,7,2832,6
-classificacao_ocorrencias,Coloquei o plugue errado e faíscou,role_prompting,USO_INCORRETO,316,7,2910,6
-classificacao_ocorrencias,"Carreguei normalmente, sem nenhum problema",zero_shot,SEM_DEFEITO,127,5,2622,4
-classificacao_ocorrencias,"Carreguei normalmente, sem nenhum problema",few_shot,SEM_DEFEITO,234,5,2678,4
-classificacao_ocorrencias,"Carreguei normalmente, sem nenhum problema",chain_of_thought,SEMDEREFITO,243,6,2772,5
-classificacao_ocorrencias,"Carreguei normalmente, sem nenhum problema",role_prompting,SEM_DEFEITO,314,5,2777,4
-extracao_dados_tecnicos,"Carregador Wallbox de 22kW trifásico, conector Tipo 2, compatível com Volvo, BYD e Fiat 500e, instalado no Shopping Iguatemi SP",zero_shot,"Aqui está a resposta estruturada em formato JSON:
-```
-{
-  ""eletroposto"": null,
+classificacao_ocorrencias,Tentei carregar meu carro mas o cabo não encaixou no meu conector,zero_shot,USO_INCORRETO,184,101,1541,6
+classificacao_ocorrencias,Tentei carregar meu carro mas o cabo não encaixou no meu conector,few_shot,FALHA_HARDWARE,284,57,1072,5
+classificacao_ocorrencias,Tentei carregar meu carro mas o cabo não encaixou no meu conector,chain_of_thought,USO_INCORRETO,281,139,2469,6
+classificacao_ocorrencias,Tentei carregar meu carro mas o cabo não encaixou no meu conector,role_prompting,USO_INCORRETO,348,204,2454,6
+classificacao_ocorrencias,O app debitou R$30 mas a recarga não iniciou,zero_shot,FALHA_PAGAMENTO,180,63,1134,7
+classificacao_ocorrencias,O app debitou R$30 mas a recarga não iniciou,few_shot,FALHA_PAGAMENTO,280,71,1200,7
+classificacao_ocorrencias,O app debitou R$30 mas a recarga não iniciou,chain_of_thought,FALHA_PAGAMENTO,277,60,1111,7
+classificacao_ocorrencias,O app debitou R$30 mas a recarga não iniciou,role_prompting,FALHA_PAGAMENTO,344,109,1589,7
+classificacao_ocorrencias,O carregador fica offline toda vez que chove,zero_shot,FALHA_HARDWARE,177,227,2670,5
+classificacao_ocorrencias,O carregador fica offline toda vez que chove,few_shot,FALHA_CONECTIVIDADE,277,77,1597,7
+classificacao_ocorrencias,O carregador fica offline toda vez que chove,chain_of_thought,FALHA_HARDWARE,274,154,1870,5
+classificacao_ocorrencias,O carregador fica offline toda vez que chove,role_prompting,FALHA_HARDWARE,341,136,1755,5
+classificacao_ocorrencias,Coloquei o plugue errado e faíscou,zero_shot,USO_INCORRETO,179,70,1137,6
+classificacao_ocorrencias,Coloquei o plugue errado e faíscou,few_shot,USO_INCORRETO,279,64,1148,6
+classificacao_ocorrencias,Coloquei o plugue errado e faíscou,chain_of_thought,USO_INCORRETO,276,170,2309,6
+classificacao_ocorrencias,Coloquei o plugue errado e faíscou,role_prompting,USO_INCORRETO,343,59,1074,6
+classificacao_ocorrencias,"Carreguei normalmente, sem nenhum problema",zero_shot,SEM_DEFEITO,175,93,1297,4
+classificacao_ocorrencias,"Carreguei normalmente, sem nenhum problema",few_shot,SEM_DEFEITO,275,54,2625,4
+classificacao_ocorrencias,"Carreguei normalmente, sem nenhum problema",chain_of_thought,SEM_DEFEITO,272,84,1273,4
+classificacao_ocorrencias,"Carreguei normalmente, sem nenhum problema",role_prompting,SEM_DEFEITO,339,56,1054,4
+extracao_dados_tecnicos,"Carregador Wallbox de 22kW trifásico, conector Tipo 2, compatível com Volvo, BYD e Fiat 500e, instalado no Shopping Iguatemi SP",zero_shot,"{
+  ""eletroposto"": ""Wallbox"",
   ""tipo_conector"": ""Tipo 2"",
   ""potencia_kw"": 22,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```",166,73,6256,72
-extracao_dados_tecnicos,"Carregador Wallbox de 22kW trifásico, conector Tipo 2, compatível com Volvo, BYD e Fiat 500e, instalado no Shopping Iguatemi SP",few_shot,"Baseado na estrutura fornecida, aqui está a saída esperada:
-
-{""eletroposto"": ""Shopping Iguatemi SP"", ""tipo_conector"": ""Tipo 2"", ""potencia_kw"": ""22kW"", ""duracao_sessao"": null, ""erro_reportado"": null, ""numero_protocolo"": null}",280,74,6495,73
-extracao_dados_tecnicos,"Carregador Wallbox de 22kW trifásico, conector Tipo 2, compatível com Volvo, BYD e Fiat 500e, instalado no Shopping Iguatemi SP",chain_of_thought,"Após raciocínio explicitamente seguindo os passos, obtenho as seguintes informações:
-
-1. Nome ou localização do eletroposto: Shopping Iguatemi SP
-2. Tipo de conector utilizado: Tipo 2
-3. Potência em kW: 22kW
-4. Duração da sessão ou tempo de espera: Não mencionada
-5. Erros ou falhas específicas relatadas: Não mencionado
-6. Número de protocolo ou código de erro: Não mencionado
-
-Estruturo o JSON com os dados encontrados:
-
-```
-{
+}",213,267,2520,58
+extracao_dados_tecnicos,"Carregador Wallbox de 22kW trifásico, conector Tipo 2, compatível com Volvo, BYD e Fiat 500e, instalado no Shopping Iguatemi SP",few_shot,"{""eletroposto"":""Shopping Iguatemi SP"",""tipo_conector"":""Tipo 2"",""potencia_kw"":""22kW"",""duracao_sessao"":null,""erro_reportado"":null,""numero_protocolo"":null}",324,171,4702,48
+extracao_dados_tecnicos,"Carregador Wallbox de 22kW trifásico, conector Tipo 2, compatível com Volvo, BYD e Fiat 500e, instalado no Shopping Iguatemi SP",chain_of_thought,"{
   ""eletroposto"": ""Shopping Iguatemi SP"",
   ""tipo_conector"": ""Tipo 2"",
   ""potencia_kw"": 22,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```",337,194,13577,193
+}",362,228,4412,62
 extracao_dados_tecnicos,"Carregador Wallbox de 22kW trifásico, conector Tipo 2, compatível com Volvo, BYD e Fiat 500e, instalado no Shopping Iguatemi SP",role_prompting,"{
-""eletroposto"": ""Wallbox"",
-""type_connector"": ""Tipo 2"",
-""potencia_kw"": 22,
-""duracao_sessao"": null,
-""erro_reportado"": null,
-""numero_protocolo"": null
-}",339,51,5244,50
-extracao_dados_tecnicos,"Eletroposto de 50kW DC, padrão CHAdeMO, tensão 400V, localizado na Rodovia Anhanguera km 45",zero_shot,"Aqui está o resultado:
-
-```
-{
-  ""eletroposto"": ""50kW DC"",
+  ""eletroposto"": ""Wallbox"",
+  ""tipo_conector"": ""Tipo 2"",
+  ""potencia_kw"": 22,
+  ""duracao_sessao"": null,
+  ""erro_reportado"": null,
+  ""numero_protocolo"": null
+}",361,184,2108,58
+extracao_dados_tecnicos,"Eletroposto de 50kW DC, padrão CHAdeMO, tensão 400V, localizado na Rodovia Anhanguera km 45",zero_shot,"{
+  ""eletroposto"": ""Rodovia Anhanguera km 45"",
   ""tipo_conector"": ""CHAdeMO"",
   ""potencia_kw"": 50,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```",160,70,6069,69
-extracao_dados_tecnicos,"Eletroposto de 50kW DC, padrão CHAdeMO, tensão 400V, localizado na Rodovia Anhanguera km 45",few_shot,"Baseando-me nos exemplos fornecidos, extraio as informações estruturadas do relato sobre a sessão de carregamento:
-
-{""eletroposto"": ""Rodovia Anhanguera km 45"", ""tipo_conector"": ""CHAdeMO"", ""potencia_kw"": ""50kW"", ""duracao_sessao"": null, ""erro_reportado"": null, ""numero_protocolo"": null}",274,90,7335,90
-extracao_dados_tecnicos,"Eletroposto de 50kW DC, padrão CHAdeMO, tensão 400V, localizado na Rodovia Anhanguera km 45",chain_of_thought,"Aqui vai a resposta final no formato solicitado:
-
-```json
-{
-  ""eletroposto"": ""Eletroposto de 50kW DC"",
+}",204,230,2423,66
+extracao_dados_tecnicos,"Eletroposto de 50kW DC, padrão CHAdeMO, tensão 400V, localizado na Rodovia Anhanguera km 45",few_shot,"{""eletroposto"":""Rodovia Anhanguera km 45"",""tipo_conector"":""CHAdeMO"",""potencia_kw"":""50kW"",""duracao_sessao"":null,""erro_reportado"":null,""numero_protocolo"":null}",315,250,2259,52
+extracao_dados_tecnicos,"Eletroposto de 50kW DC, padrão CHAdeMO, tensão 400V, localizado na Rodovia Anhanguera km 45",chain_of_thought,"{
+  ""eletroposto"": ""Rodovia Anhanguera km 45"",
   ""tipo_conector"": ""CHAdeMO"",
   ""potencia_kw"": 50,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```",331,82,7350,81
+}",353,172,1722,66
 extracao_dados_tecnicos,"Eletroposto de 50kW DC, padrão CHAdeMO, tensão 400V, localizado na Rodovia Anhanguera km 45",role_prompting,"{
-""eletroposto"": ""50kW DC"",
-""type_conector"": ""CHAdeMO"",
-""potencia_kw"": 50,
-""duracao_sessao"": null,
-""erro_reportado"": null,
-""numero_protocolo"": null
-}",333,54,5754,53
-extracao_dados_tecnicos,"Carregador ABB Terra de 175kW, conector CCS2, instalado no Aeroporto de Guarulhos, terminal 2",zero_shot,"Aqui está a resposta estruturada em formato de JSON:
-```json
-{
-  ""eletroposto"": ""ABB"",
-  ""tipo_conector"": ""CCS2"",
-  ""potencia_kw"": 175,
+  ""eletroposto"": ""Rodovia Anhanguera km 45"",
+  ""tipo_conector"": ""CHAdeMO"",
+  ""potencia_kw"": 50,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```
-Lembre-se de que o relato não forneceu informações sobre a duração da sessão, erro reportado e número do protocolo, portanto, foram preenchidos com `null` como solicitado.",154,123,9193,122
-extracao_dados_tecnicos,"Carregador ABB Terra de 175kW, conector CCS2, instalado no Aeroporto de Guarulhos, terminal 2",few_shot,"Based on the provided examples and format, here is the extracted information in a structured JSON format:
-
-```
-{
+}",352,242,2426,66
+extracao_dados_tecnicos,"Carregador ABB Terra de 175kW, conector CCS2, instalado no Aeroporto de Guarulhos, terminal 2",zero_shot,"{
   ""eletroposto"": ""Aeroporto de Guarulhos, terminal 2"",
   ""tipo_conector"": ""CCS2"",
-  ""potencia_kw"": ""175kW"",
+  ""potencia_kw"": 175,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```
-
-Let me know if you have any further questions!",268,103,8594,102
-extracao_dados_tecnicos,"Carregador ABB Terra de 175kW, conector CCS2, instalado no Aeroporto de Guarulhos, terminal 2",chain_of_thought,"Seguindo os passos de raciocínio:
-
-1. Identifique o nome ou localização do eletroposto mencionado: Eletroposto ABB Terra instalado no Aeroporto de Guarulhos, terminal 2.
-2. Procure pelo tipo de conector utilizado: CCS2.
-3. Identifique a potência em kW: 175kW.
-4. Procure por duração da sessão ou tempo de espera: Ausente.
-5. Identifique erros ou falhas específicas relatadas: Ausente.
-6. Procure por número de protocolo ou código de erro: Ausente.
-
-Monte o JSON com os dados encontrados:
-```
-{
-  ""eletroposto"": ""ABB Terra instalado no Aeroporto de Guarulhos, terminal 2"",
+}",201,207,2227,67
+extracao_dados_tecnicos,"Carregador ABB Terra de 175kW, conector CCS2, instalado no Aeroporto de Guarulhos, terminal 2",few_shot,"{""eletroposto"": ""Aeroporto de Guarulhos, terminal 2"", ""tipo_conector"": ""CCS2"", ""potencia_kw"": ""175kW"", ""duracao_sessao"": null, ""erro_reportado"": null, ""numero_protocolo"": null}",312,212,3981,61
+extracao_dados_tecnicos,"Carregador ABB Terra de 175kW, conector CCS2, instalado no Aeroporto de Guarulhos, terminal 2",chain_of_thought,"{
+  ""eletroposto"": ""Aeroporto de Guarulhos, terminal 2"",
   ""tipo_conector"": ""CCS2"",
   ""potencia_kw"": 175,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```
-Resposta final:
-```
-{
-  ""eletroposto"": ""ABB Terra instalado no Aeroporto de Guarulhos, terminal 2"",
-  ""tipo_conector"": ""CCS2"",
-  ""potencia_kw"": 175,
-  ""duracao_sessao"": null,
-  ""erro_reportado"": null,
-  ""numero_protocolo"": null
-}
-```",325,297,19749,296
+}",350,257,2367,67
 extracao_dados_tecnicos,"Carregador ABB Terra de 175kW, conector CCS2, instalado no Aeroporto de Guarulhos, terminal 2",role_prompting,"{
-""eletroposto"": ""ABB Terra"",
-""type_conector"": ""CCS2"",
-""potencia_kw"": 175,
-""duracao_sessao"": null,
-""erro_reportado"": null,
-""numero_protocolo"": null
-}",327,52,5261,51
-extracao_dados_tecnicos,"WEG EVC300 de 300kW DC com conectores CCS2 e CHAdeMO, tensão 800V, localizado no posto Shell da Marginal Pinheiros",zero_shot,"Aqui está o resultado:
-
-```
-{
+  ""eletroposto"": ""ABB Terra"",
+  ""tipo_conector"": ""CCS2"",
+  ""potencia_kw"": 175,
+  ""duracao_sessao"": null,
+  ""erro_reportado"": null,
+  ""numero_protocolo"": null
+}",349,277,4243,58
+extracao_dados_tecnicos,"WEG EVC300 de 300kW DC com conectores CCS2 e CHAdeMO, tensão 800V, localizado no posto Shell da Marginal Pinheiros",zero_shot,"{
   ""eletroposto"": ""Shell da Marginal Pinheiros"",
-  ""tipo_conector"": [""CCS2"", ""CHAdeMO""],
+  ""tipo_conector"": ""CCS2, CHAdeMO"",
   ""potencia_kw"": 300,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```",163,78,6986,77
-extracao_dados_tecnicos,"WEG EVC300 de 300kW DC com conectores CCS2 e CHAdeMO, tensão 800V, localizado no posto Shell da Marginal Pinheiros",few_shot,"Baseando-se nos exemplos fornecidos, extraio as informações estruturadas da sessão de carregamento:
-
-{""eletroposto"": ""Shell da Marginal Pinheiros"", ""tipo_conector"": ""CCS2 e CHAdeMO"", ""potencia_kw"": ""300kW DC"", ""duracao_sessao"": null, ""erro_reportado"": null, ""numero_protocolo"": null}",277,90,7982,89
-extracao_dados_tecnicos,"WEG EVC300 de 300kW DC com conectores CCS2 e CHAdeMO, tensão 800V, localizado no posto Shell da Marginal Pinheiros",chain_of_thought,"Seguindo os passos de raciocínio, extraio as informações estruturadas do relato sobre a sessão de carregamento:
-
-```
-{
-  ""eletroposto"": ""WEG EVC300"",
-  ""localizacao"": ""Shell da Marginal Pinheiros"",
-  ""tipo_conector"": [""CCS2"", ""CHAdeMO""],
+}",208,273,3300,68
+extracao_dados_tecnicos,"WEG EVC300 de 300kW DC com conectores CCS2 e CHAdeMO, tensão 800V, localizado no posto Shell da Marginal Pinheiros",few_shot,"{
+  ""eletroposto"": ""Shell da Marginal Pinheiros"",
+  ""tipo_conector"": ""CCS2, CHAdeMO"",
+  ""potencia_kw"": ""300kW"",
+  ""duracao_sessao"": null,
+  ""erro_reportado"": null,
+  ""numero_protocolo"": null
+}",319,285,3213,70
+extracao_dados_tecnicos,"WEG EVC300 de 300kW DC com conectores CCS2 e CHAdeMO, tensão 800V, localizado no posto Shell da Marginal Pinheiros",chain_of_thought,"{
+  ""eletroposto"": ""Shell da Marginal Pinheiros"",
+  ""tipo_conector"": ""CCS2, CHAdeMO"",
   ""potencia_kw"": 300,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```
-
-Nota: Como não há informações específicas sobre a duração da sessão, erro reportado ou número de protocolo, foram atribuídos valores `null` para essas chaves.",334,157,12000,156
+}",357,269,3340,68
 extracao_dados_tecnicos,"WEG EVC300 de 300kW DC com conectores CCS2 e CHAdeMO, tensão 800V, localizado no posto Shell da Marginal Pinheiros",role_prompting,"{
-""eletroposto"": ""WEG EVC300"",
-""tipo_conector"": [""CCS2"", ""CHAdeMO""],
-""potencia_kw"": 300,
-""duracao_sessao"": ""?"",
-""erro_reportado"": null,
-""numero_protocolo"": null
-}",336,61,6636,60
-extracao_dados_tecnicos,"Carregador AC Schneider de 11kW, Tipo 2 monofásico, instalado no estacionamento do Hospital Albert Einstein",zero_shot,"Aqui está o JSON com as informações estruturadas da sessão de carregamento:
-```
-{
-  ""eletroposto"": ""Hospital Albert Einstein"",
-  ""tipo_conector"": ""Tipo 2 monofásico"",
-  ""potencia_kw"": 11,
-  ""duracao_sessao"": null, // Ausente, pois não há informações sobre a duração da sessão
-  ""erro_reportado"": null, // Ausente, pois não há informações sobre erros reportados
-  ""numero_protocolo"": null // Ausente, pois não há número de protocolo informado
-}
-```",153,131,9913,130
-extracao_dados_tecnicos,"Carregador AC Schneider de 11kW, Tipo 2 monofásico, instalado no estacionamento do Hospital Albert Einstein",few_shot,"Here is the extracted information in the expected JSON format:
-
-```
-{
-  ""eletroposto"": ""estacionamento do Hospital Albert Einstein"",
-  ""tipo_conector"": ""Tipo 2 monofásico"",
-  ""potencia_kw"": ""11kW"",
-  ""duracao_sessao"": null,
-  ""erro_reportado"": null,
-  ""numero_protocolo"": null
-}
-```",267,84,7347,83
-extracao_dados_tecnicos,"Carregador AC Schneider de 11kW, Tipo 2 monofásico, instalado no estacionamento do Hospital Albert Einstein",chain_of_thought,"Aqui está a resposta final no formato solicitado:
-
-```json
-{
+  ""eletroposto"": """,356,300,3371,9
+extracao_dados_tecnicos,"Carregador AC Schneider de 11kW, Tipo 2 monofásico, instalado no estacionamento do Hospital Albert Einstein",zero_shot,"{
   ""eletroposto"": ""Hospital Albert Einstein"",
   ""tipo_conector"": ""Tipo 2 monofásico"",
   ""potencia_kw"": 11,
   ""duracao_sessao"": null,
   ""erro_reportado"": null,
   ""numero_protocolo"": null
-}
-```
-
-Foi feito o raciocínio explicitamente seguindo os passos:
-
-1. Identifique o nome ou localização do eletroposto mencionado: O eletroposto está localizado no estacionamento do Hospital Albert Einstein.
-2. Procure pelo tipo de conector utilizado: O conector utilizado é Tipo 2 monofásico.
-3. Identifique a potência em kW, se mencionada: A potência do carregador AC Schneider é 11kW.
-4. Procure por duração da sessão ou tempo de espera: Não há menção à duração da sessão ou tempo de espera.
-5. Identifique erros ou falhas específicas relatadas: Não há menção a erros ou falhas específicas.
-6. Procure por número de protocolo ou código de erro: Não há menção a número de protocolo ou código de erro.
-7. Monte o JSON com os dados encontrados, null para os ausentes: Foi montado o JSON com as chaves e valores mencionados acima.",324,308,20466,307
+}",199,242,3019,63
+extracao_dados_tecnicos,"Carregador AC Schneider de 11kW, Tipo 2 monofásico, instalado no estacionamento do Hospital Albert Einstein",few_shot,"{""eletroposto"":""Hospital Albert Einstein"",""tipo_conector"":""Tipo 2"",""potencia_kw"":""11kW"",""duracao_sessao"":null,""erro_reportado"":null,""numero_protocolo"":null}",310,140,2022,45
+extracao_dados_tecnicos,"Carregador AC Schneider de 11kW, Tipo 2 monofásico, instalado no estacionamento do Hospital Albert Einstein",chain_of_thought,"{
+  ""eletroposto"": ""Estacionamento do Hospital Albert Einstein"",
+  ""tipo_conector"": ""Tipo 2"",
+  ""potencia_kw"": 11,
+  ""duracao_sessao"": null,
+  ""erro_reportado"": null,
+  ""numero_protocolo"": null
+}",348,240,2261,63
 extracao_dados_tecnicos,"Carregador AC Schneider de 11kW, Tipo 2 monofásico, instalado no estacionamento do Hospital Albert Einstein",role_prompting,"{
-""eletroposto"": ""Schneider"",
-""tipo_conector"": ""Tipo 2 monofásico"",
-""potencia_kw"": 11,
-""duracao_sessao"": ""?"",
-""erro_reportado"": null,
-""numero_protocolo"": null
-}",326,57,6046,56
-resposta_suporte,"Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",zero_shot,Entendemos sua frustração em não ter conseguido recarregar seu carro após pagar R$45. Nossa equipe irá verificar o ocorrido e providenciar um reembolso imediato para que você possa continuar a usar o eletroposto com segurança. Estamos trabalhando arduamente para resolver este problema e garantir que nossos serviços sejam de alta qualidade.,149,86,7292,85
-resposta_suporte,"Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",few_shot,"**Resposta**
-
-Entendemos sua frustração ao pagar R$45 por recarga e não ter obtido o serviço esperado no eletroposto. Nossa equipe técnica foi acionada para verificar o problema e encontrará uma solução adequada para você. Em até 4 horas, entraremos em contato com a previsão concreta de reparo ou reembolso do valor pago.",261,88,7544,87
-resposta_suporte,"Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",chain_of_thought,"**Raciocínio**
-
-1. Identifico que o relato é negativo.
-2. Reconheço que o usuário pagou R$45 por recarga, mas não conseguiu carregar o carro, o que é um problema específico.
-3. Informo a ação tomada ou próximo passo concreto: Vamos investigar o motivo do erro e contatar o usuário para uma solução.
-4. Demonstro urgência real, pois o usuário perdeu tempo e recursos com o serviço não prestado.
-5. Fecho com compromisso ou chamada para ação: Estou comprometido em resolvê-lo o mais rápido possível.
-
-**Resposta final**
-
-""Lamento muito que você tenha tido esse problema ao recarregar seu carro. Vamos investigar imediatamente o motivo do erro e entrar em contato com você para uma solução. Estou comprometido em resolver isso o mais rápido possível, e garantirei que você receba seu dinheiro de volta.""",293,217,14901,216
-resposta_suporte,"Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",role_prompting,"""Sinto muito que tenha tido essa experiência desagradável com nossa rede de carregamento. Estamos trabalhando arduamente para investigar o motivo pelo qual não houve recarga do seu carro e garantir que isso não ocorra novamente. Em breve, um membro da nossa equipe irá entrar em contato com você para discutir a compensação pela recarga não realizada. Obrigado por sua confiança em nossos serviços e esperamos ter a oportunidade de demonstrar nossa capacidade de atendimento.""",358,116,8973,115
-resposta_suporte,"O carregador travou com meu cabo preso por 30 minutos, tive que ligar para o suporte de emergência",zero_shot,"""Entendi como isso deve ter sido frustrante para você! Nossa equipe trabalha arduamente para garantir que nossos produtos sejam confiáveis e seguros. Estou muito preocupado com o fato do carregador travar e atrasar sua atividade por 30 minutos, especialmente quando você precisava do suporte de emergência. Vou enviar um equipe especializada para verificar o seu produto e garantir que esteja funcionando corretamente. Além disso, gostaria de ofertar-lhe um reembolso parcial como forma de compensação por essa experiência desagradável.""",153,135,11340,134
-resposta_suporte,"O carregador travou com meu cabo preso por 30 minutos, tive que ligar para o suporte de emergência",few_shot,"Entendemos sua frustração ao ter seu cabo preso no carregador por 30 minutos, sem poder fazer uso do eletroposto durante esse tempo. Nossa equipe técnica trabalha arduamente para garantir que todos os dispositivos estejam funcionando corretamente. Vamos agendar uma revisão especial no local para verificar o problema e garantir que seja resolvido ao mais breve prazo possível.",265,90,7907,89
-resposta_suporte,"O carregador travou com meu cabo preso por 30 minutos, tive que ligar para o suporte de emergência",chain_of_thought,"### RACIOCÍNIO
-
-1. Identifico que o relato é negativo.
-2. Reconhecemos que houve um problema específico com o carregador, que travou com o cabo preso por 30 minutos, forçando o usuário a ligar para o suporte de emergência.
-3. A ação tomada ou próximo passo concreto é investigar a causa do problema e tomar medidas para prevenir futuros incidentes semelhantes.
-4. Como o problema foi crítico, demonstraremos urgência real ao informar que estamos trabalhando rapidamente para resolver essa questão.
-5. Fechamos com compromisso ao oferecer suporte adicional e apoiamento ao usuário.
-
-### RESPOSTA FINAL
-
-""Lamento muito a inconveniência causada pelo carregador travado com o seu cabo preso por 30 minutos. Estamos trabalhando rapidamente para investigar a causa do problema e tomar medidas para prevenir futuros incidentes semelhantes. Como um passo adicional, oferecemos suporte especializado para ajudá-lo a resolver qualquer outro problema que possa ter surgido. Estou aqui para apoiá-lo.""",297,260,17325,259
-resposta_suporte,"O carregador travou com meu cabo preso por 30 minutos, tive que ligar para o suporte de emergência",role_prompting,"""Entendi a frustração que experimentou ao ter o carregador travado com seu cabo preso por 30 minutos. Gostaria de informá-lo que tomamos medidas imediatas para solucionar o problema e garantir que isso não ocorra novamente. Nossa equipe técnica está trabalhando para atualizar o sistema e prevenir futuras interrupções. Em breve, você receberá um update com as alterações implementadas.""",362,97,7936,96
-resposta_suporte,"App cobrou sessão que nunca iniciou, já é a segunda vez esse mês",zero_shot,"Entendemos que isso pode ser frustrante para você. Estamos investigando o motivo pelo qual o aplicativo cobrou sessão mesmo quando não havia sido iniciada, e trabalharemos para corrigir essa situação. Como um passo inicial, pedimos que você nos forneça mais detalhes sobre a sessão em questão, para que possamos melhorar nossos processos e evitar que isso aconteça novamente.",143,92,7473,91
-resposta_suporte,"App cobrou sessão que nunca iniciou, já é a segunda vez esse mês",few_shot,"Entendemos sua frustração - não iniciar sessões é um obstáculo importante para você e sua experiência com o eletroposto do Ibirapuera. Já estamos trabalhando para resolver esse problema, escalamos a ocorrência para nossa equipe de suporte técnico regional com prioridade alta. Nossa equipe entrará em contato em até 4 horas para fornecer uma previsão concreta de resolução. Estamos comprometidos em garantir que você possa aproveitar ao máximo sua sessão sem mais problemas.",255,117,8922,117
-resposta_suporte,"App cobrou sessão que nunca iniciou, já é a segunda vez esse mês",chain_of_thought,"Raciocínio:
-
-1. Identifique: A reclamação é negativa.
-2. Reconheça: Infelizmente, você já experimentou dois casos de cobrança indevida do aplicativo e isso é um problema real.
-3. Informe a ação tomada ou próximo passo concreto: Vamos investigar esses incidentes e reavaliar nossas políticas de cobrança para garantir que não haja mais situações semelhantes no futuro.
-4. Demonstre urgência (se o problema foi crítico): Não vamos tolerar que você seja cobrado indevidamente novamente e estamos trabalhando arduamente para encontrar uma solução.
-5. Feche com compromisso ou chamada para ação: Estamos comprometidos em fornecer um serviço de alta qualidade e esperamos sua cooperação para ajudar a melhorar nossas práticas.
-
-Resposta final:
-
-""Infelizmente, você já experimentou dois casos de cobrança indevida do aplicativo e isso é um problema real. Vamos investigar esses incidentes e reavaliar nossas políticas de cobrança para garantir que não haja mais situações semelhantes no futuro. Não vamos tolerar que você seja cobrado indevidamente novamente e estamos trabalhando arduamente para encontrar uma solução. Estamos comprometidos em fornecer um serviço de alta qualidade e esperamos sua cooperação para ajudar a melhorar nossas práticas.""",287,324,21151,323
-resposta_suporte,"App cobrou sessão que nunca iniciou, já é a segunda vez esse mês",role_prompting,"""Entendi que você enfrentou um problema inesperado com sua sessão no eletroposto. Infelizmente, isso não é apenas um incidente isolado, pois ocorreu pela segunda vez este mês. Estamos trabalhando rapidamente para investigar o motivo e evitar futuras ocasiões semelhantes. Em breve, você receberá uma notificação com as ações que vamos implementar para garantir a estabilidade da sua sessão.""",352,100,8027,99
-resposta_suporte,Fiquei esperando o carregador liberar por 1 hora e o status no app nunca atualizou,zero_shot,"Entendemos que você se sentiu frustrado ao esperar durante uma hora pelo carregador do seu eletroposto sem ter qualquer atualização no aplicativo. Lamentamos essa experiência desagradável e estamos trabalhando para melhorar a comunicação entre o app e os nossos serviços. Como medida concreta, iremos revisar o status de disponibilidade dos carregadores em nosso sistema para garantir que você seja notificado imediatamente quando o seu eletroposto estiver pronto.",149,111,8446,110
-resposta_suporte,Fiquei esperando o carregador liberar por 1 hora e o status no app nunca atualizou,few_shot,"Entendemos sua frustração ao esperar por mais tempo do que previsto para liberar o carregador no eletroposto do Ibirapuera. Nossa equipe trabalhará arduamente para investigar a causa da demora e implementar correções necessárias. Em seguida, entraremos em contato com você dentro de 2 horas com uma previsão concreta de reparo e um plano de ação para evitar futuras situações semelhantes.",261,106,8234,105
-resposta_suporte,Fiquei esperando o carregador liberar por 1 hora e o status no app nunca atualizou,chain_of_thought,"### RACIOCÍNIO
-
-1. Identifique: A reclamação é negativa.
-2. Reconheça: Fiquei esperando o carregador liberar por 1 hora, e o status no app não atualizou.
-3. Informe a ação tomada ou próximo passo concreto: Vou verificar os logs da aplicação para entender melhor o que ocorreu e tomar medidas para garantir que o status seja atualizado corretamente.
-4. Demonstre urgência real (se for crítico): Entendo a frustração de esperar por tanto tempo sem saber o que estava acontecendo, e vou trabalhar para resolvê-lo o mais rápido possível.
-5. Feche com compromisso ou chamada para ação: Estou aqui para ajudá-lo e garantir que você possa usar seu eletroposto com confiança.
-
-### RESPOSTA FINAL
-
-Lamento muito que tenha tido essa experiência frustrante. Vou verificar os logs da aplicação para entender melhor o que ocorreu e tomar medidas para garantir que o status seja atualizado corretamente. Estou aqui para ajudá-lo e garantir que você possa usar seu eletroposto com confiança.",293,266,17501,265
-resposta_suporte,Fiquei esperando o carregador liberar por 1 hora e o status no app nunca atualizou,role_prompting,"""Entendi sua frustração ao esperar por 1 hora sem que o carregador fosse liberado e não haver atualização no app. Estou investigando o motivo da demora e verificando se houve qualquer problema técnico. Eu vou garantir que você receba uma compensação adequada por esse tempo perdido e também vou priorizar a resolução do problema para evitar futuras situações semelhantes. Vou manter você informado sobre os próximos passos e vamos trabalhar juntos para resolver isso.""",358,119,10558,118
-resposta_suporte,O carregador indicou 150kW mas meu carro carregou a no máximo 40kW durante toda a sessão,zero_shot,"""Entendemos sua frustração com a taxa de carregamento inferior ao indicado pelo eletroposto. Nossa equipe técnica irá investigar este caso para entender melhor o que ocorreu e tomar medidas corretivas. Em breve, você receberá uma atualização sobre as providências tomadas para garantir um carregamento seguro e eficaz em seu carro.""",153,81,8069,80
-resposta_suporte,O carregador indicou 150kW mas meu carro carregou a no máximo 40kW durante toda a sessão,few_shot,"Entendemos sua desapontamento — esperava-se que o carregador do eletroposto Ibirapuera fornecesse a potência indicada de 150kW, mas infelizmente apenas alcançou 40kW. Nossa equipe técnica está investigando imediatamente o problema para identificar a causa e tomar medidas corretivas. Esperamos estar em contato com você em até 2 horas com uma previsão concreta de reparo ou ajuste para garantir que você obtenha a experiência de carregamento projetada.",265,125,9432,124
-resposta_suporte,O carregador indicou 150kW mas meu carro carregou a no máximo 40kW durante toda a sessão,chain_of_thought,"Raciocínio:
-
-1. Identifique se o relato é positivo, negativo ou misto: Negativo
-2. Reconheça o problema específico sem se esquivar: O carregador indicou 150kW, mas seu carro apenas alcançou 40kW durante a sessão de carregamento.
-3. Informe a ação tomada ou próximo passo concreto: Nós iremos verificar o carregador para garantir que esteja funcionando corretamente e realizar ajustes necessários para atingir a potência indicada.
-4. Se o problema foi crítico, demonstre urgência real: Sim, porque isso pode afetar a segurança e eficiência do carregamento de seu carro.
-5. Feche com compromisso ou chamada para ação: Estamos comprometidos em encontrar uma solução rápida e satisfatória para este problema.
-
-Resposta final:
-
-""Obrigado por ter trazido isso à nossa atenção. Infelizmente, o carregador não alcançou a potência indicada de 150kW, apenas 40kW durante a sessão. Vamos verificar o carregador e realizar ajustes necessários para garantir que esteja funcionando corretamente. Isso é crítico porque pode afetar a segurança e eficiência do carregamento do seu carro. Estamos comprometidos em encontrar uma solução rápida e satisfatória para este problema.""",297,325,21386,324
-resposta_suporte,O carregador indicou 150kW mas meu carro carregou a no máximo 40kW durante toda a sessão,role_prompting,"""Entendi seu constrangimento ao verificar que o carregador não alcançou a potência esperada para seu veículo. Nossa equipe técnica está investigando o motivo da diferença entre as informações do eletroposto (150kW) e a realização da carga (40kW). Em breve, você receberá um email com os resultados da análise e uma proposta de resolução para garantir que sua próxima sessão de carregamento seja eficaz. Muito obrigado por nos ter alertado sobre isso.""",362,118,9551,117
+  ""eletroposto"": ""Schneider"",
+  ""tipo_conector"": ""Tipo 2 monofásico"",
+  ""potencia_kw"": 11,
+  ""duracao_sessao"": null,
+  ""erro_reportado"": null,
+  ""numero_protocolo"": null
+}",347,200,3850,62
+resposta_suporte,"Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",zero_shot,"Lamentamos que a recarga de R$ 45,00 não tenha transferido energia ao seu veículo e entendemos a frustração que isso gera. Estamos abrindo imediatamente um chamado técnico para verificar o eletroposto utilizado e, enquanto isso, solicitamos que nos envie o comprovante da transação (foto ou captura de tela) para o e‑mail suporte@eletroposto.com. Assim que a análise for concluída, efetuaremos o reembolso integral em até 3 dias úteis, com a confirmação enviada por mensagem. Agradecemos por nos alertar sobre o problema e garantimos que tomaremos todas as medidas para evitar que isso se repita.",190,233,2904,165
+resposta_suporte,"Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",few_shot,"Lamentamos que, após o pagamento de R$ 45, a recarga não tenha sido efetuada e compreendemos a urgência de reaver esse valor. Já iniciamos a abertura de um pedido de estorno imediato e, paralelamente, estamos verificando o histórico da estação para identificar a falha que impediu o carregamento. Você receberá a confirmação do reembolso e um relatório da análise em até 2 horas úteis, diretamente no e‑mail cadastrado. Agradecemos a paciência e seguimos à disposição para garantir que sua próxima experiência seja totalmente satisfatória.",284,254,2839,154
+resposta_suporte,"Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",chain_of_thought,"Entendemos que o pagamento de R$45 não gerou nenhum carregamento no seu veículo. Já encaminhamos sua solicitação ao setor financeiro, que emitirá o estorno em até 24 horas úteis. Simultaneamente, nossa equipe técnica está analisando o registro da estação para identificar a falha e evitar que ocorra novamente",306,300,3586,87
+resposta_suporte,"Paguei R$45 de recarga e o carro não carregou nada, quero meu dinheiro de volta",role_prompting,"Entendemos como é frustrante pagar R$ 45 e não ter a energia creditada ao seu veículo, e pedimos desculpas pela falha no nosso carregador. Já abrimos a solicitação de estorno e o valor será devolvido na mesma forma de pagamento em até 3 dias úteis. Enquanto isso, estamos revisando o equipamento do ponto 15‑A para garantir que não haja nova interrupção. Conte conosco para que sua próxima recarga seja tranquila e sem contratempos.",355,155,2911,125
+resposta_suporte,"O carregador travou com meu cabo preso por 30 minutos, tive que ligar para o suporte de emergência",zero_shot,"Lamentamos profundamente que o carregador tenha travado com o cabo preso por 30 minutos, obrigando‑o a acionar o suporte de emergência. Já registramos o incidente e enviaremos um técnico especializado ao local ainda hoje para verificar o equipamento e garantir que não volte a ocorrer. Enquanto isso, creditaremos o tempo de espera na sua próxima recarga e disponibilizaremos um cupom de desconto de 15 % para uso em qualquer de nossos eletropostos. Agradecemos por nos alertar sobre o problema e seguimos à disposição para assegurar que sua experiência seja segura e ágil.",190,270,2910,155
+resposta_suporte,"O carregador travou com meu cabo preso por 30 minutos, tive que ligar para o suporte de emergência",few_shot,"Sentimos muito pelo transtorno causado quando o carregador travou com o cabo preso por 30 minutos, obrigando-o a acionar o suporte de emergência. Já abrimos um chamado de prioridade 1 e a equipe técnica será enviada ao eletroposto nas próximas 2 horas para diagnosticar e reparar o equipamento. Como forma de compensação, creditaremos R$ 30,00 na sua conta e enviaremos um",284,300,3194,112
+resposta_suporte,"O carregador travou com meu cabo preso por 30 minutos, tive que ligar para o suporte de emergência",chain_of_thought,"Identificamos que o carregador ficou travado com o cabo preso por 30 minutos, o que exigiu a chamada ao suporte de emergência. Nossa equipe já está enviando um técnico ao local para inspeção e reparo imediato do equipamento, além de registrar o incidente para evitar recorrências. Enquanto isso, providenciaremos um carregador substituto para que você possa continuar usando o serviço sem interrupções. Agradecemos por nos alertar e garantimos acompanhamento até a solução completa.",306,183,2441,124
+resposta_suporte,"O carregador travou com meu cabo preso por 30 minutos, tive que ligar para o suporte de emergência",role_prompting,"Lamentamos que o carregador tenha travado e ficado com o cabo preso por 30 minutos, obrigando‑o a acionar o suporte de emergência. Já acionamos a equipe de manutenção da unidade 12‑B e enviamos um técnico ao local, que realizará a inspeção e o reparo ainda hoje, garantindo que o ponto volte a operar normalmente. Enquanto isso, creditaremos o valor da sessão interrompida na sua conta e enviaremos um relatório de conclusão até amanhã à tarde. Agradecemos por nos alertar e seguimos à disposição para que sua próxima recarga seja tranquila e sem contratempos.",355,184,2340,162
+resposta_suporte,"App cobrou sessão que nunca iniciou, já é a segunda vez esse mês",zero_shot,"Lamentamos muito que o aplicativo tenha cobrado duas sessões que não foram iniciadas, especialmente em um curto intervalo de tempo. Já encaminhamos seu caso ao nosso time de suporte para analisar o histórico de transações e garantir o estorno imediato do valor cobrado indevidamente. Também estamos revisando o processo de verificação de início de sessão para evitar que esse tipo de erro se repita. Em até 24 horas você receberá a confirmação do reembolso por e‑mail ou notificação no app. Agradecemos por nos alertar e seguimos à disposição para garantir uma experiência mais confiável.",183,191,2169,154
+resposta_suporte,"App cobrou sessão que nunca iniciou, já é a segunda vez esse mês",few_shot,"Entendemos como é frustrante ser cobrado por uma sessão que nem chegou a iniciar, ainda mais repetindo a situação neste mês. Já estamos abrindo um chamado interno para analisar o histórico da sua conta e identificar a falha no processo de pagamento. Enquanto isso, providenciaremos o estorno imediato do valor cobrado e adicionaremos um crédito de 20 % do total como forma de compensação. Assim que a investigação for concluída, entraremos em contato nas próximas 24 horas com a confirmação do reembolso e as medidas adotadas para evitar novas ocorrências.",277,221,2310,151
+resposta_suporte,"App cobrou sessão que nunca iniciou, já é a segunda vez esse mês",chain_of_thought,"**Raciocínio**  
+1. O relato é claramente negativo.  
+2. O usuário aponta que o aplicativo cobrou uma sessão que nunca foi iniciada, ocorrendo isso",299,300,2931,46
+resposta_suporte,"App cobrou sessão que nunca iniciou, já é a segunda vez esse mês",role_prompting,"Lamentamos que o aplicativo tenha registrado uma cobrança por uma sessão que nem chegou a iniciar, principalmente por ser a segunda ocorrência neste mês. Já acionamos nossa equipe de faturamento para validar o débito e garantir a devolução integral até o próximo dia útil. Paralelamente, estamos revisando o fluxo de início de sessão para eliminar essa falha e evitar novos transtornos. Agradecemos por nos alertar e seguimos à disposição para confirmar o reembolso assim que o processo for concluído.",348,178,2268,131
+resposta_suporte,Fiquei esperando o carregador liberar por 1 hora e o status no app nunca atualizou,zero_shot,"Lamentamos sinceramente que o carregador tenha ficado indisponível por uma hora e que o status não tenha sido atualizado no aplicativo. Já estamos analisando os registros do ponto de carga e da comunicação com o app para identificar a falha e garantir que isso não se repita. Enquanto isso, nossa equipe de suporte entrará em contato nas próximas 24 horas para reembolsar o tempo perdido e oferecer um crédito adicional em sua próxima recarga. Agradecemos por nos alertar e seguimos à disposição para melhorar sua experiência.",187,184,5188,137
+resposta_suporte,Fiquei esperando o carregador liberar por 1 hora e o status no app nunca atualizou,few_shot,"Lamentamos que o carregador tenha ficado bloqueado por uma hora e que o aplicativo não tenha refletido a situação em tempo real. Registramos sua ocorrência imediatamente e acionamos a equipe de manutenção local para investigar o problema de comunicação entre o posto e o app. Em até 2 horas você receberá um contato da nossa central com a atualização do status e, se necessário, o agendamento de uma visita ao equipamento. Agradecemos seu relato e estamos comprometidos em garantir que sua próxima recarga seja rápida e sem falhas.",281,215,1953,139
+resposta_suporte,Fiquei esperando o carregador liberar por 1 hora e o status no app nunca atualizou,chain_of_thought,"Entendemos que você ficou cerca de uma hora aguardando a liberação do carregador enquanto o aplicativo permanecia sem atualizar o status. Já registramos o incidente e encaminhamos os detalhes da estação e do log de comunicação para a equipe técnica, que verificará a sincronização entre o ponto de carga e o app. Caso a análise aponte falha no equipamento, faremos a intervenção necessária ainda hoje e enviaremos a confirmação de conclusão por e‑mail. Enquanto isso, pedimos que nos informe o número da estação para agilizar o diagnóstico.",303,248,2556,143
+resposta_suporte,Fiquei esperando o carregador liberar por 1 hora e o status no app nunca atualizou,role_prompting,"Lamentamos que o carregador tenha ficado preso por uma hora e que o app não tenha refletido a atualização de status. Já acionamos nossa equipe de suporte técnico para reiniciar o módulo de comunicação desse posto e, enquanto isso, estamos creditando o tempo de espera na sua conta. Você receberá a confirmação do ajuste por e‑mail nas próximas 24 horas. Se precisar retomar a recarga ainda hoje, indique um horário e enviaremos um código de acesso prioritário. Agradecemos a paciência e seguimos à disposição para garantir que sua próxima experiência seja fluida.",352,162,1740,152
+resposta_suporte,O carregador indicou 150kW mas meu carro carregou a no máximo 40kW durante toda a sessão,zero_shot,"Lamentamos que o carregador tenha exibido 150 kW e o seu veículo tenha recebido apenas 40 kW durante a sessão. Já registramos o incidente e encaminhamos a equipe técnica para analisar o equipamento, coletar os logs da sua recarga e verificar possíveis restrições de comunicação com o carro. Enquanto isso, oferecemos a você um crédito equivalente a uma recarga completa em outro ponto da nossa rede, que pode ser utilizado nas próximas 30 dias. Agradecemos o seu relato e seguimos à disposição para garantir que suas próximas experiências de carregamento sejam totalmente satisfatórias.",193,215,2282,166
+resposta_suporte,O carregador indicou 150kW mas meu carro carregou a no máximo 40kW durante toda a sessão,few_shot,"Compreendemos a frustração de ver o carregador exibindo 150 kW e, mesmo assim, seu veículo receber apenas 40 kW durante toda a sessão. Já abrimos um chamado técnico para analisar o equipamento do ponto e a comunicação com o sistema do seu carro, e enviaremos um especialista ao local nas próximas 6 horas. Enquanto isso, registramos os dados da sua sessão para comparar com outros veículos e garantir que o problema seja resolvido de forma definitiva. Agradecemos o relato e nos comprometemos a restabelecer o desempenho máximo de carregamento o quanto antes.",287,203,2342,160
+resposta_suporte,O carregador indicou 150kW mas meu carro carregou a no máximo 40kW durante toda a sessão,chain_of_thought,"Identificamos que o carregador exibiu 150 kW, porém seu veículo recebeu apenas 40 kW durante toda a sessão, o que indica um possível problema de comunicação ou de hardware no ponto de carga. Já acionamos a equipe técnica para analisar os logs da estação e, caso necessário, realizaremos uma inspeção presencial ainda nesta semana. Enquanto isso, pedimos que nos informe o número da sessão e o modelo exato do seu carro para confirmar a compatibilidade dos protocolos de carga. Garantimos que o problema será resolvido o mais rápido possível e que você receberá uma atualização assim que tivermos um diagnóstico definitivo.",309,262,2966,160
+resposta_suporte,O carregador indicou 150kW mas meu carro carregou a no máximo 40kW durante toda a sessão,role_prompting,"Sentimos muito por o seu carro ter recebido apenas 40 kW em um ponto que anunciava 150 kW, e entendemos como isso pode ter atrapalhado sua viagem. Já acionamos nossa equipe técnica para revisar a configuração e o firmware do carregador, e enviaremos um engenheiro ao local até o final da próxima semana (até 5 de junho). Enquanto isso, registramos sua sessão no nosso sistema e garantimos que o valor pago será creditado em sua conta para a próxima recarga. Agradecemos por nos alertar sobre o ocorrido e estamos comprometidos em restaurar a potência plena do ponto o mais rápido possível.",358,219,3710,162
